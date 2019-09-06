@@ -1,11 +1,18 @@
-FROM ruby:2.5
+# https://docs.docker.com/compose/rails/
+FROM ruby:2.5.5
 RUN apt-get update -qq 
 RUN mkdir /myapp
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
+
 RUN bundle install
 COPY . /myapp
+
+# Set Rails environment to production
+# ENV RAILS_ENV production
+# RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+#    && apt install -y nodejs
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/

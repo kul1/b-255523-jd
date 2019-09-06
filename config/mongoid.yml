@@ -10,7 +10,7 @@ development:
       # of host:port pairs. (required)
       hosts:
         # - localhost:27017
-        - mongodb
+        - mongodb # for production
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
@@ -141,7 +141,13 @@ development:
 production:
   clients:
     default:
-      uri: <%= ENV['MONGODB_URI'] %>
+        # uri: <%= ENV['MONGODB_URI'] %>
+      database: b255523_jd_development
+      # Provides the hosts the default client can connect to. Must be an array
+      # of host:port pairs. (required)
+      hosts:
+        # - localhost:27017
+        - mongodb
   options:
     raise_not_found_error: false
     belongs_to_required_by_default: false
