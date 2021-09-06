@@ -1,5 +1,5 @@
 # https://docs.docker.com/compose/rails/
-FROM ruby:2.5.5
+FROM ruby:2.6.8
 RUN apt-get update -qq 
 RUN mkdir /myapp
 WORKDIR /myapp
